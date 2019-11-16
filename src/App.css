@@ -1,0 +1,115 @@
+
+.section {
+  margin-top: 18vh;
+  margin-left: 40vw;
+  height: 55vh;
+  width: 17vw;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.container {
+  padding-top: 1em;
+  margin: .5em 3.25em;;
+}
+
+h2 {
+  margin-left: 4.8vw;
+}
+
+.box {
+ margin-left: -.25vw;;
+}
+
+.error {
+  font-size: .75em;
+  color: red;
+  padding: 0;
+  margin:  0;
+}
+
+.error-box {
+  border: 1px solid red;
+}
+
+.field {
+  padding: .5em;
+}
+
+.input {
+  margin-top: .5em; 
+}
+
+.button  {
+  margin-left: .75em;
+}
+
+.login-section {
+  height: 25vh;
+  margin-top: 30vh;
+  margin-left: 41vw;
+}
+
+.login-container {
+  padding-left: .50vw;
+}
+
+.input {
+  margin-bottom: 1em;
+  width: 10vw;
+}
+
+.inline {
+  display: inline;
+}
+
+.legal {
+  margin-left: 45vw;
+  padding-top: 1vh;
+  color: white;
+}
+
+.legal-text {
+  font-size: .25em;
+  padding-right: 4em;
+}
+
+.button {
+  height: 3vh;
+  width: 10.4vw;
+  margin-left: 0;
+  background-color: blue;
+  color: white;
+}
+
+.createUser {
+  margin-left: .33vw;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+li {
+  list-style: none;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns:  18vw 1fr;
+  height: 100vh;
+  background-color: blue;
+}
+
+.content {
+  background-color: white;
+
+}
+
+#centered-toggle-button {
+  outline: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
