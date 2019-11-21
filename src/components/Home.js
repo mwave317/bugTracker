@@ -1,10 +1,11 @@
 import React from 'react';
 import Nav from './Nav';
+import Register from './Register';
 
 const Home = () => {
     return (
         <div>
-           <Nav/>
+           <Register/>
         </div>
     )
 }

@@ -18,7 +18,7 @@ const Nav = () => {
                 <Router history={newHistory}>
                     <nav className="aside">
                         <ul>
-                            <li className="link"><Link to="/">Your Work</Link></li>
+                            <li className="link"><Link to="/yourwork">Your Work</Link></li>
                             <li className="link"><Link to="/repositories">Repositories</Link></li>
                             <li className="link"><Link to="/projects">Projects</Link></li>
                             <li className="link"><Link to="/pullrequets">Pull Requests</Link></li>
@@ -28,7 +28,7 @@ const Nav = () => {
                     </nav>
                     <div className="content">
                         <Switch>
-                            <Route exact path="/"><YourWork /></Route>
+                            <Route exact path="/yourwork"><YourWork /></Route>
                             <Route path="/repositories"><Repositories /></Route>
                             <Route path="/projects"><Projects /></Route>
                             <Route path="/username">Load component Pull Requests</Route>

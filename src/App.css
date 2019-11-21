@@ -2,15 +2,15 @@
 .section {
   margin-top: 18vh;
   margin-left: 40vw;
-  height: 55vh;
+  height: 65vh;
   width: 17vw;
   background-color: white;
   border: 1px solid black;
 }
 
 .container {
-  padding-top: 1em;
-  margin: .5em 3.25em;;
+  padding-top: 1vh;
+  margin: 1vh 3.25vw;;
 }
 
 h2 {
@@ -19,6 +19,10 @@ h2 {
 
 .box {
  margin-left: -.25vw;;
+}
+
+.label {
+  font-size: 1vw;
 }
 
 .error {
@@ -36,10 +40,6 @@ h2 {
   padding: .5em;
 }
 
-.input {
-  margin-top: .5em; 
-}
-
 .button  {
   margin-left: .75em;
 }
@@ -55,7 +55,8 @@ h2 {
 }
 
 .input {
-  margin-bottom: 1em;
+  margin-top: 1vh; 
+  margin-bottom: 1vh;
   width: 10vw;
 }
 
@@ -83,6 +84,7 @@ h2 {
 }
 
 .createUser {
+  margin-top: 2vh;
   margin-left: .33vw;
 }
 

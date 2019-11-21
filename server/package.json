@@ -4,12 +4,14 @@
   "description": "Backend for the bugTracker software",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ken Coppola",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mongoose": "^5.7.11"
   },

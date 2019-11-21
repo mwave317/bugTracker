@@ -11,9 +11,10 @@ const Form = () => {
   } = useForm(login, validate);
 
   function login() {
-    console.log('No errors, submit callback called!');
-  }
+    console.log('You have been logged in.');
 
+  } // This is the end of the login function
+  // const renders = React.useRef(0);
   return (
     <div className="section">
       <h2>Bug Tracker</h2>
@@ -49,6 +50,12 @@ const Form = () => {
                 </div>
               </div>
               <div className="field">
+                <label className="label">username</label>
+                <div>
+                  <input autoComplete="username" type="text" className={`input ${errors.username && 'error-box'}`} name="username" onChange={handleChange} value={values.username || ''} required />
+                </div>
+              </div>
+              <div className="field">
                 <label className="label">Password</label>
                 <div>
                   <input autoComplete="new-password" className={`input ${errors.password && 'error-box'}`} type="password" name="password" onChange={handleChange} value={values.password || ''} required />
@@ -68,6 +75,7 @@ const Form = () => {
               </div>
               <button type="submit" className="button createUser">Create User</button>
             </form>
+            {/* <div>render: {renders.current++}</div> */}
           </div>
         </div>
       </div>

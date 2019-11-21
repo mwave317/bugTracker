@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Register from './Register';
 
 
@@ -18,6 +19,14 @@ const Login = () => {
         }
         //send to api to check if correct by passing the userData.
         setUser(userData);
+        axios.post('http://localhost:5000/signin/', {
+            username: userData.username,
+            password: userData.password,
+            
+        }).then((res) => console.log('This is the res from the handlesubmit', res))
+        .catch(err => console.log('Are you seeing this', err));
+
+        console.log(userData);
         setUsername(''); // Added just to clear the inputs for username  and password before redirect.
         setPassword('');
     }
