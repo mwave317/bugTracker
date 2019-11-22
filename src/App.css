@@ -1,3 +1,25 @@
+/* Used throughtout app */
+
+.inline {
+  display: inline;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.button  {
+  margin-left: .75em;
+}
+
+.error {
+  font-size: .75em;
+  color: red;
+  padding: 0;
+  margin:  0;
+}
+
+/* For login and Register  */
 
 .section {
   margin-top: 18vh;
@@ -13,36 +35,25 @@
   margin: 1vh 3.25vw;;
 }
 
-h2 {
-  margin-left: 4.8vw;
-}
-
-.box {
- margin-left: -.25vw;;
-}
-
-.label {
-  font-size: 1vw;
-}
-
-.error {
-  font-size: .75em;
-  color: red;
-  padding: 0;
-  margin:  0;
+.input {
+  margin-top: 1vh; 
+  margin-bottom: 1vh;
+  width: 10vw;
 }
 
 .error-box {
   border: 1px solid red;
 }
 
-.field {
-  padding: .5em;
+.button {
+  height: 3vh;
+  width: 10.4vw;
+  margin-left: 0;
+  background-color: blue;
+  color: white;
 }
 
-.button  {
-  margin-left: .75em;
-}
+/* For login */
 
 .login-section {
   height: 25vh;
@@ -54,14 +65,8 @@ h2 {
   padding-left: .50vw;
 }
 
-.input {
-  margin-top: 1vh; 
-  margin-bottom: 1vh;
-  width: 10vw;
-}
-
-.inline {
-  display: inline;
+h2 {
+  margin-left: 4.8vw;
 }
 
 .legal {
@@ -75,28 +80,49 @@ h2 {
   padding-right: 4em;
 }
 
-.button {
-  height: 3vh;
-  width: 10.4vw;
-  margin-left: 0;
-  background-color: blue;
-  color: white;
+.box {
+ margin-left: -.25vw;;
 }
+
+.field {
+  padding: .5em;
+}
+
+/* For Register */
 
 .createUser {
   margin-top: 2vh;
   margin-left: .33vw;
 }
 
+.label {
+  font-size: 1vw;
+}
+
+/* Nav */
+
+.nav-h2 {
+  margin: .5vw .5vw 4vh 1vw; /* margin: 2vw 3vw to have it inline with the Your Work h2 */
+}
+
 a {
   text-decoration: none;
   color: white;
 }
+
 li {
   list-style: none;
+  text-decoration: none;
+  color: white;
 }
 
-.wrapper {
+.link {
+  margin-bottom: 1vh;
+}
+
+/* Home */
+
+.aside {
   display: grid;
   grid-template-columns:  18vw 1fr;
   height: 100vh;
@@ -108,10 +134,8 @@ li {
 
 }
 
+/* Issues */
 #centered-toggle-button {
   outline: none;
 }
 
-.hidden {
-  visibility: hidden;
-}

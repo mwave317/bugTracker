@@ -56,7 +56,7 @@ const TicketModal = () => {
     };
     return (
         <div className={!close ? "modal" : "hidden"}>
-            <h2>New Ticket</h2>
+            <h2 className="ticket-h2">New Ticket</h2>
             <div className="actions">
                 <form onSubmit={ticketModalSubmit}>
                     <label>Summary:</label>
