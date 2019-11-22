@@ -26,7 +26,6 @@ const Login = () => {
         }).then((res) => console.log('This is the res from the handlesubmit', res))
         .catch(err => console.log('Are you seeing this', err));
 
-        console.log(userData);
         setUsername(''); // Added just to clear the inputs for username  and password before redirect.
         setPassword('');
     }

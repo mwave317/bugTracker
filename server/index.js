@@ -15,7 +15,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-
 app.use('/', authRoutes);
 
 mongoose.connect(keys.mongoURI, { useUnifiedTopology: true , useNewUrlParser: true})
