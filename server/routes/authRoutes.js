@@ -22,6 +22,7 @@ router.post('/signup', async (req, res) => {
                 });
 
                 await user.save();
+                // res.render('http://localhost:3000/yourwork');
                 res.status(200).send(user);
             }
         });

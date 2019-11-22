@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const  authRoutes = require('./routes/authRoutes');
+const  ticketRoutes = require('./routes/ticketRoutes');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ limit: '10mb' , extended: false }));
@@ -16,6 +17,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', authRoutes);
+app.use('/ticket', ticketRoutes);
 
 mongoose.connect(keys.mongoURI, { useUnifiedTopology: true , useNewUrlParser: true})
 .then(()=> console.log("Mongodb Connected"))
