@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Register from './Register';
+import Home from '../components/Home';
+import {useSelector } from 'react-redux';
+import { connect } from  'react-redux';
+import { Redirect } from  'react-router-dom';
+import Register from '../components/Register';
 
 
-const Login = () => {
+const Login = (props) => {
 
+    const isLogged = useSelector(state => state.authReducer);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState(null);
+    const [results, setResults] = useState();
 
     const formSubmit = event => {
         event.preventDefault();
@@ -23,12 +29,13 @@ const Login = () => {
             username: userData.username,
             password: userData.password,
             
-        }).then((res) => console.log('This is the res from the handlesubmit', res.data))
+        }).then((res) => console.log(res.data))
         .catch(err => console.log('Are you seeing this', err));
 
         setUsername(''); // Added just to clear the inputs for username  and password before redirect.
         setPassword('');
     }
+
 
     return (
         <div>
@@ -41,17 +48,21 @@ const Login = () => {
                             <input className="input" onChange={ev => setPassword(ev.target.value)} type='password' autoComplete='current-password' placeholder='password' value={password} />
                             <button className="inline button" type="submit">Continue</button>
                         </form>
-
-
-                        {/* <p>{user && JSON.stringify(user, null, 2)}</p> */}
                     </div>
-
+       
                 </div>
             </div>
             <div className="legal"><p className="legal-text inline">Privacy Policy</p><p className="legal-text inline"> Terms of service</p></div>
+            <Register/> 
         </div>
     )
-
 }
+
+// Exmaple below:
+// /* function mapStateToProps({ auth, recent }) {
+//     return { auth, recent };
+//   }
+  
+  /*export default connect(mapStateToProps, actions)(AddComment); */
 
 export default Login;

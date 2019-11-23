@@ -18,16 +18,19 @@ const useForm = (callback, validate) => {
     if (event) event.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
+
+    const { firstName, lastName, email, username, password } = values;
     
     axios.post('http://localhost:5000/signup/', {
-    "firstName": values.firstName,
-    "lastName": values.lastName,
-    "email": values.email,
-    "username": values.username,
-    "password": values.password,
-    
-}).then((res) => console.log('This is the res from the handlesubmit', res))
-.catch(err => console.log(err));
+
+      firstName,
+      lastName,
+      email,
+      username,
+      password,
+
+    }).then((res) => console.log('This is the res from the handlesubmit', res))
+      .catch(err => console.log(err));
   };
   const handleChange = (event) => {
     event.persist();

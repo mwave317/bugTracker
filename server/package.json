@@ -9,6 +9,7 @@
   },
   "author": "Ken Coppola",
   "license": "ISC",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",

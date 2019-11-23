@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
+
 router.post('/signup', async (req, res) => {
     try {
 
@@ -22,7 +23,6 @@ router.post('/signup', async (req, res) => {
                 });
 
                 await user.save();
-                // res.render('http://localhost:3000/yourwork');
                 res.status(200).send(user);
             }
         });
@@ -42,11 +42,9 @@ router.post('/signin', (req, res) => {
                     if (err) {
                         console.log(err);
                     } else if (response) {
-                        res.status(200).send('User Found')
-                    } else {
-                        res.status(200).send('Either the username or password is invalid');
+                        // res.status(200).send(true)
+                        res.status(200).redirect('http://localhost:3000/dashboard')
                     }
-
                 })
             });
 
