@@ -1,6 +1,14 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const Ticket = require('../models/Ticket');
+const User = mongoose.model('user');
+
+
+router.get('/developers', async (req, res) => {
+        let developers  = await User.find({}, {firstName : 1, lastName: 1})
+        res.status(200).send(developers)  
+        });
 
 router.post('/add', async (req, res) => {
     try {

@@ -12,9 +12,9 @@ const ticketSchema = new Schema ({
         required: [true]
     },
     reporter : {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: [true],
-        default: '',
     },
     description: {
         type: String,
@@ -31,9 +31,9 @@ const ticketSchema = new Schema ({
         default: '',
     },
     assignee: { 
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: [true],
-        default: '',
     },
     epic: { 
         type: String,

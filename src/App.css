@@ -8,6 +8,10 @@
   visibility: hidden;
 }
 
+.outline {
+  outline: none;
+}
+
 .button  {
   margin-left: .75em;
 }
