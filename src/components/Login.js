@@ -7,7 +7,7 @@ import { Redirect } from  'react-router-dom';
 import Register from '../components/Register';
 
 
-const Login = (props) => {
+const Login = () => {
 
     const isLogged = useSelector(state => state.authReducer);
 
@@ -19,15 +19,10 @@ const Login = (props) => {
     const formSubmit = event => {
         event.preventDefault();
 
-        const userData = {
+        //send to api to check if correct by passing the userData.
+        axios.post('http://localhost:5000/signin/', {
             username,
             password,
-        }
-        //send to api to check if correct by passing the userData.
-        setUser(userData);
-        axios.post('http://localhost:5000/signin/', {
-            username: userData.username,
-            password: userData.password,
             
         }).then((res) => console.log(res.data))
         .catch(err => console.log('Are you seeing this', err));

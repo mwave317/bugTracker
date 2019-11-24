@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import TicketModal from './TicketModal';
+import Type from './Type';
 
 const Issues = () => {
     const [toggle, setToggle] = useState(false);
+    const [type, setType ] = useState(false);
 
     let modalToggle = () => {
         !toggle ? setToggle(true) : setToggle(false);
+        if (type) setType(false)
     }
 
+    let typeToggle = () => {
+        !type ? setType(true) : setType(false);
+        if (toggle) setToggle(false);
+    }
 
     return (
         <div>
             <button className="toggle-button" id="centered-toggle-button" onClick={modalToggle}>Create New Task</button>
+            <button className="toggle-button" id="centered-toggle-button" onClick={typeToggle}>Create New Type</button>
             <div>
-                {toggle ? <TicketModal /> : false}
+                {toggle && !type ? <TicketModal /> : false}
+                {type && !toggle ? <Type/> : false}
             </div>
 
         </div>

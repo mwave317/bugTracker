@@ -11,18 +11,31 @@ const TicketModal = () => {
     const [labels, setLabels] = useState('');
     const [attachement, setAttachment] = useState('');
     const [linkedIssues, setLinkedIssues] = useState('');
-    const [assignee, setAssignee] = useState('test');
+    const [assignee, setAssignee] = useState('');
     const [epic, setEpic] = useState('');
     const [sprint, setSprint] = useState('');
     const [comment, setComment] = useState('');
     const [user, setUser] = useState(null);
     const [close, setClose] = useState(false);
-    const [developers, setDevelopers] = useState([])
+    const [developers, setDevelopers] = useState([]);
+    const [types, setTypes] = useState([]); 
+    const [addType, setAddType ] = useState('');
 
 
     useEffect(() => {
         getDevelopers();
+        getTypes();
     }, []);
+
+    const getTypes = async () => {
+        const response = await axios.get('http://localhost:5000/type');
+        setTypes(response.data);
+        return () => {
+
+        }
+    }
+
+    let retreiveTypes = types.map((type, index) => <option key={index} value ={type._id}>{type.type}</option>);
 
     const getDevelopers = async () => {
         const response = await axios.get('http://localhost:5000/ticket/developers');
@@ -51,25 +64,9 @@ const TicketModal = () => {
     const ticketModalSubmit = event => {
         event.preventDefault();
 
-        const TicketData = {
-            summary,
-            type,
-            reporter,
-            description,
-            labels,
-            attachement,
-            linkedIssues,
-            assignee,
-            epic,
-            sprint,
-            comment,
-        }
-
-        setUser(TicketData);
-
         axios.post('http://localhost:5000/ticket/add', {
             summary,
-            type,
+            addType,
             reporter,
             description,
             labels,
@@ -93,9 +90,12 @@ const TicketModal = () => {
                 <form onSubmit={ticketModalSubmit}>
                     <label>Summary:</label>
                     <input className="modalInput ouline" type="text" onChange={ev => setSummary(ev.target.value)} name="summary" value={summary}></input>
+               
 
                     <label>Type:
-                <input className="modalInput ouline" type="text" onChange={ev => setType(ev.target.value)} name="type" value={type}></input>
+                    <select className="modalInput ouline" onChange={ev=> { setAddType(ev.target.value) }} value={addType}>
+                    {retreiveTypes}
+                    </select>
                     </label>
                     <label>Reporter:
                     <select className="modalInput ouline" onChange={ev=> { setReporter(ev.target.value) }} value={reporter}>

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const  authRoutes = require('./routes/authRoutes');
 const  ticketRoutes = require('./routes/ticketRoutes');
+const typeRoutes = require('./routes/typeRoutes');
 
 app.use(express.json());
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 
 app.use('/', authRoutes);
 app.use('/ticket', ticketRoutes);
+app.use('/type', typeRoutes);
 
 
 

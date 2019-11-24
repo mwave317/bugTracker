@@ -19,7 +19,7 @@ const Home = () => {
                     <div className="content">
                         <Switch>
                             <Route exact path ="/dashboard"><Dashboard/></Route>
-                            <Route exact path="/dashboard/repositories"><Repositories /></Route>
+                            <Route exact path="/repositories"><Repositories /></Route>
                             <Route exact path="/projects"><Projects /></Route>
                             <Route exact path="/username">Load component Pull Requests</Route>
                             <Route exact path="/issues"><Issues /></Route>

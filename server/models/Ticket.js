@@ -7,9 +7,10 @@ const ticketSchema = new Schema ({
         required: [true],
         default: '',
     },
-    type : {
-        type: String,
-        required: [true]
+    addType : {
+        type: Schema.Types.ObjectId,
+        ref: 'Type',
+        required: [true],
     },
     reporter : {
         type: Schema.Types.ObjectId,

@@ -12,11 +12,12 @@ router.get('/developers', async (req, res) => {
 
 router.post('/add', async (req, res) => {
     try {
-        const { summary, type, reporter, description, labels, linkedIssues, assignee, epic, sprint, comment } = req.body;
+        const { summary, addType, reporter, description, labels, linkedIssues, assignee, epic, sprint, comment } = req.body;
+        console.log(addType);
 
                 const AddTicket = new Ticket({
                     summary,
-                    type,
+                    addType,
                     reporter,
                     description,
                     labels,
