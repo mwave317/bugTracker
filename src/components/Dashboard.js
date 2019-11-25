@@ -3,7 +3,7 @@ import Calendar from './Calendar';
 
 const Dashboard = () => {
 let date = new Date();
-    console.log(date.toDateString("en-US"));
+    // console.log(date.toDateString("en-US"));
     return (
         <div>
             <h2>Dash Board</h2>
