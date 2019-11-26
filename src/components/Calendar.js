@@ -6,10 +6,6 @@ import '../App.css';
 const Calendar = () => {
 
     const date = new Date();
-
-
-    // const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
     const [months , setMonths] = useState(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
     const [dayHeadings, setDayHeadings] = useState (['S','M','T','W','T','F','S'])
     let [arrayOfPastMonth, setArrayOfPastMonth] = useState([]);
@@ -27,7 +23,6 @@ const Calendar = () => {
     let [getPastMonth, setPastMonth] = useState(date.getMonth());
     let [getDaysInPastMonth, setGetDaysInPastMonth] = useState(new Date(year, getPastMonth--, 0).getDate());
     let [days, setDays] = useState(new Date(year, getPastMonth, 0).getDate());
-    console.log(days)
     //Setting the days for the past month
     
     
@@ -35,22 +30,17 @@ const Calendar = () => {
     let [daysToShowOfPastMonth, setDaysToShowOfPastMonth ] = useState(getDaysInPastMonth - getStartDate);
 
     //----------------------------------
-console.log(daysToShowOfPastMonth);
-console.log(getDaysInPastMonth);
     let displayDays = () => {
         for (let i = daysToShowOfPastMonth; i <= getDaysInPastMonth; i++) {
             arrayOfPastMonth.push(i);
         }
-console.log(arrayOfPastMonth)
         arrayOfDays.push(...arrayOfPastMonth);
 
         for (let j = 1; j <= days ; j++) {
-            console.log(j);
             arrayOfDays.push(j);
         }  
         return arrayOfDays;
     }
-console.log(arrayOfDays);
     // ---------------------------------------
     let previousMonth = () => {
         setSelectedDay('')
@@ -108,7 +98,7 @@ console.log(arrayOfDays);
                         <div className="displayMonth"> {displayMonth} {displayYear}</div>
                         <div className="arrows nextMonth" onClick={nextMonth} onMouseEnter={() => setMonth(month + 1)} onMouseLeave={() => setMonth(month - 1)}>&gt;</div>
                     </div>
-                    <div className ="daysOfWeek">{dayHeadings.map((day, index) =><div>{day}</div>)}</div>
+                    <div className ="daysOfWeek">{dayHeadings.map((day, index) =><div key ={index}>{day}</div>)}</div>
                     <div className="days">{arrayOfDays.map((day, index) => <div key={index}  onClick={() => setSelectedDay(day)}>{day}</div>)}</div>
                 </div>
                 </>
