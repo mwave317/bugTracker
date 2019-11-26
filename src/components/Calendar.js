@@ -27,7 +27,7 @@ const Calendar = () => {
     let [days, setDays] = useState(getDate(month, year));
     let arrayOfDays = [];
 
-    for (let i = 1; i <= days; i++) {
+    for (let i = 1; i < days; i++) {
         arrayOfDays.push(i);
     }
 
@@ -47,7 +47,8 @@ const Calendar = () => {
             setMonth(month--);
            
             setPleaseSetThePreviosMonth(months[month])
-            setDays(getDate(month +1, year)); 
+            console.log(month);
+            setDays(getDate(month, year)); 
     }
 
     //-----------------------------------------------
@@ -58,7 +59,7 @@ const Calendar = () => {
         setShowPastMonth(false);
         setShowNextMonth(true);
         
-        if (month === 11) {
+        if (month > 11) {
             month = -1;
             setYear(year++);
             setDisplayYear(year);
@@ -70,9 +71,7 @@ const Calendar = () => {
         
             setMonth(month++);
             setPleaseSetTheNextMonth(months[month])
-            setDays(getDate(month + 1, year));
-            
-        // }
+            setDays(getDate(month, year));
      
     }
 
@@ -81,7 +80,8 @@ const Calendar = () => {
     // console.log('This is the displayMonth', displayMonth);
     // console.log('This is the previous month', pleaseSetThePreviosMonth);
     // console.log('This is the next month', pleaseSetTheNextMonth);
-
+    console.log(month);
+    console.log(days);
     let showTheCalendar = () => {
         showCalendar ? setShowCalendar(false) : setShowCalendar(true);
     };

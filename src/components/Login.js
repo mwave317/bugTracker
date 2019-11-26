@@ -4,7 +4,6 @@ import Home from '../components/Home';
 import {useSelector } from 'react-redux';
 import { connect } from  'react-redux';
 import { Redirect } from  'react-router-dom';
-import Register from '../components/Register';
 
 
 const Login = () => {
@@ -48,7 +47,6 @@ const Login = () => {
                 </div>
             </div>
             <div className="legal"><p className="legal-text inline">Privacy Policy</p><p className="legal-text inline"> Terms of service</p></div>
-            <Register/> 
         </div>
     )
 }

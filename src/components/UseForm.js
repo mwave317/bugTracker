@@ -31,6 +31,7 @@ const useForm = (callback, validate) => {
 
     }).then((res) => console.log('This is the res from the handlesubmit', res))
       .catch(err => console.log(err));
+     setValues({});
   };
   const handleChange = (event) => {
     event.persist();
