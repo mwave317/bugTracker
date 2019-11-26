@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/calendar.css';
 
 
@@ -9,8 +9,8 @@ const Calendar = () => {
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    let [month, setMonth] = useState(date.getMonth());
-    let [displayMonth, setDisplayMonth] = useState(months[month]);
+    let [month, setMonth] = useState(date.getMonth());  // Sets the month
+    let [displayMonth, setDisplayMonth] = useState(months[month]); // this is  the initial State
     let [currentMonth, setCurrentMonth] = useState(months[date.getMonth()]);
     let [currentYear, setCurrentYear] = useState(date.getFullYear());
     let [year, setYear] = useState(date.getFullYear());
@@ -18,10 +18,6 @@ const Calendar = () => {
     let [showCalendar, setShowCalendar] = useState(false);
     let [displayedDay, setDisplayedDay] = useState(date.getDate());
     let [selectedDay, setSelectedDay] = useState();
-    let [pleaseSetThePreviosMonth, setPleaseSetThePreviosMonth] = useState();
-    let [pleaseSetTheNextMonth, setPleaseSetTheNextMonth] = useState();
-    let [showPastMonth, setShowPastMonth] = useState(false);
-    let [showNextMonth, setShowNextMonth] = useState(false);
     const getDate = (month, year) => new Date(year, month, 0).getDate();
 
     let [days, setDays] = useState(getDate(month, year));
@@ -33,55 +29,43 @@ const Calendar = () => {
 
 // ---------------------------------------
     let previousMonth = () => {
-        setDisplayMonth('')
         setSelectedDay('')
-        setShowPastMonth(true);
-        setShowNextMonth(false);
-        if (month === 0) {
-            month = 12;
+        console.log(displayMonth);
+        if (month === -1) {
+            setMonth(month = 11);
+            console.log(month)
             setYear(year--);
             setDisplayYear(year);
             setDays(setYear(year--), getDate(month, year));
 
         }
-            setMonth(month--);
+            setMonth(month-1);
            
-            setPleaseSetThePreviosMonth(months[month])
-            console.log(month);
+            setDisplayMonth(months[month])
             setDays(getDate(month, year)); 
     }
 
     //-----------------------------------------------
     let nextMonth = () => {
        
-        setDisplayMonth('')
-        setSelectedDay('')
-        setShowPastMonth(false);
-        setShowNextMonth(true);
-        
-        if (month > 11) {
-            month = -1;
+        setSelectedDay('');
+
+        if (month === 12) {
+            console.log('This is the current month', month);
+            setMonth(month = 0);
             setYear(year++);
             setDisplayYear(year);
             setDays(setYear(year++), getDate(month, year));
         }
         console.log(month);
-        console.log(pleaseSetTheNextMonth);
-        
-        
-            setMonth(month++);
-            setPleaseSetTheNextMonth(months[month])
+        setMonth(month+1);
+            setDisplayMonth(months[month])
             setDays(getDate(month, year));
-     
+     console.log('This is the displayed month', displayMonth);
     }
 
     // ---------------------------------------------------
 
-    // console.log('This is the displayMonth', displayMonth);
-    // console.log('This is the previous month', pleaseSetThePreviosMonth);
-    // console.log('This is the next month', pleaseSetTheNextMonth);
-    console.log(month);
-    console.log(days);
     let showTheCalendar = () => {
         showCalendar ? setShowCalendar(false) : setShowCalendar(true);
     };
@@ -93,9 +77,9 @@ const Calendar = () => {
             {showCalendar ?
                 <><div className="dates">
                     <div className="month">
-                        <div className="arrows previous" onClick={previousMonth}>&lt;</div>
-<div className="displayMonth"> {showPastMonth ? pleaseSetThePreviosMonth : ''} {showNextMonth ? pleaseSetTheNextMonth : ''}{displayMonth ? displayMonth : ''} {displayYear}</div>
-                        <div className="arrows nextMonth" onClick={nextMonth}>&gt;</div>
+                        <div className="arrows previous" onClick={previousMonth} onMouseEnter={() => setMonth(month-1)} onMouseLeave={() => setMonth(month+1)}>&lt;</div>
+<div className="displayMonth"> {displayMonth} {displayYear}</div>
+                        <div className="arrows nextMonth" onClick={nextMonth} onMouseEnter={() => setMonth(month+1)} onMouseLeave={() => setMonth(month -1)}>&gt;</div>
                     </div>
                     <div className="days">{arrayOfDays.map((day, index) => <div key={index} onClick={() => setSelectedDay(index + 1)}>{day}</div>)}
                     </div>
