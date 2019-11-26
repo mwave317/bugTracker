@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../css/calendar.css';
+import '../App.css';
 
 
 const Calendar = () => {
@@ -7,8 +8,10 @@ const Calendar = () => {
     const date = new Date();
 
 
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    
+    // const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    const [months , setMonths] = useState(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
+    const [dayHeadings, setDayHeadings] = useState (['S','M','T','W','T','F','S'])
     let [arrayOfPastMonth, setArrayOfPastMonth] = useState([]);
     let [arrayOfDays, setArrayOfDays ] = useState([]);
     let [month, setMonth] = useState(date.getMonth());
@@ -105,8 +108,8 @@ console.log(arrayOfDays);
                         <div className="displayMonth"> {displayMonth} {displayYear}</div>
                         <div className="arrows nextMonth" onClick={nextMonth} onMouseEnter={() => setMonth(month + 1)} onMouseLeave={() => setMonth(month - 1)}>&gt;</div>
                     </div>
-                    <div className="days">{arrayOfDays.map((day, index) => <div key={index}  onClick={() => setSelectedDay(day)}>{day}</div>)}
-                    </div>
+                    <div className ="daysOfWeek">{dayHeadings.map((day, index) =><div>{day}</div>)}</div>
+                    <div className="days">{arrayOfDays.map((day, index) => <div key={index}  onClick={() => setSelectedDay(day)}>{day}</div>)}</div>
                 </div>
                 </>
                 : ''}

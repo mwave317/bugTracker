@@ -65,8 +65,11 @@
 
 .days  {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, 2.71vw);
+    text-align: center;
+    grid-auto-columns: 500px;
     height: 200px;
+
 }
 
 .day {
@@ -79,4 +82,9 @@
 
 .day.selected {
     background-color: #00CA85;
+}
+.daysOfWeek {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1vh;
 }
