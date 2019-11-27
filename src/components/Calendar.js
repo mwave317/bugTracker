@@ -4,43 +4,50 @@ import '../App.css';
 
 
 const Calendar = () => {
-    const date = new Date(); 
+    const date = new Date();
+
     let [month, setMonth] = useState(date.getMonth());
-
-
     let [year, setYear] = useState(date.getFullYear());
     let [currentYear, setCurrentYear] = useState(date.getFullYear());
     let [displayYear, setDisplayYear] = useState(year);
-   
-  
-   let [forDisplayedMonth, setForDisplayedMonth] = useState(date.getMonth()-1);
-   let date1 = new Date(year, forDisplayedMonth, 0);
-   let date2 = new Date(year, month, 0);
+
+    const date1 = new Date();
+    let [forDisplayedMonth, setForDisplayedMonth] = useState(date1.getMonth() + 1);
+
+    let test = new Date(year, forDisplayedMonth, 0);
+    let totalNumberOfDaysInDisplayedMonth = test.getDate();;
+
+
+
+    let date2 = new Date(year, month, 0);
+    let totalNumberOfDaysInPreviousMonth = date2.getDate();
+    let firstDayOfTheRequestedMonth = new Date(date2 + "1" + year).getDay();
+
 
     let arrayOfDays = [];
     let arrayOfPastMonth = [];
 
-    const [months , setMonths] = useState(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
-    const [dayHeadings, setDayHeadings] = useState (['S','M','T','W','T','F','S'])
+    const [months, setMonths] = useState(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
+    const [dayHeadings, setDayHeadings] = useState(['S', 'M', 'T', 'W', 'T', 'F', 'S'])
 
-  
+
     let [currentMonth, setCurrentMonth] = useState(months[date.getMonth()]);
     let [displayMonth, setDisplayMonth] = useState(months[month]);
 
-   
 
-    
-   
+
+
+
     let [showCalendar, setShowCalendar] = useState(false);
     let [displayedDay, setDisplayedDay] = useState(date.getDate());
     let [selectedDay, setSelectedDay] = useState();
-    
-    let totalNumberOfDaysInDisplayedMonth = date1.getDate();
-    
-    let totalNumberOfDaysInPreviousMonth = date2.getDate();
-    let firstDayOfTheRequestedMonth = new Date(date2 + "1" + year ).getDay();
+
+
+
+
 
     let daysGoneBy = totalNumberOfDaysInPreviousMonth - firstDayOfTheRequestedMonth;
+
     //----------------------------------
     let displayDays = () => {
         for (let i = daysGoneBy; i <= totalNumberOfDaysInPreviousMonth; i++) {
@@ -48,9 +55,9 @@ const Calendar = () => {
         }
         arrayOfDays.push(...arrayOfPastMonth);
 
-        for (let j = 1; j <= totalNumberOfDaysInDisplayedMonth ; j++) {
+        for (let j = 1; j <= totalNumberOfDaysInDisplayedMonth; j++) {
             arrayOfDays.push(j);
-        }  
+        }
         return arrayOfDays;
     }
     // ---------------------------------------
@@ -66,12 +73,17 @@ const Calendar = () => {
             setYear(year--);
             setDisplayYear(year);
         }
+        setForDisplayedMonth(forDisplayedMonth - 1)
+
+        if (forDisplayedMonth === 1) {
+            setForDisplayedMonth(forDisplayedMonth = 12);
+
+        }
         setDisplayMonth(months[month])
-        setForDisplayedMonth(forDisplayedMonth--);
         setYear(year);
         displayDays();
     }
-   
+
 
     //-----------------------------------------------
     let nextMonth = () => {
@@ -84,20 +96,24 @@ const Calendar = () => {
             setYear(year++);
             setDisplayYear(year);
         }
+        setForDisplayedMonth(forDisplayedMonth + 1)
+        if (forDisplayedMonth === 12) {
+            setForDisplayedMonth(forDisplayedMonth = 1);
+
+        }
         setDisplayMonth(months[month])
-        setForDisplayedMonth(forDisplayedMonth ++);
         setYear(year);
         displayDays();
     }
 
     displayDays();
- 
+
     // ---------------------------------------------------
 
     let showTheCalendar = () => {
         showCalendar ? setShowCalendar(false) : setShowCalendar(true); displayDays();
     };
-   
+
     return (
         <div className="date-picker">
             <div className="selected-date" onClick={showTheCalendar}>{!selectedDay ? <span>{currentMonth} {displayedDay} {currentYear}</span> : <span>{displayMonth} {selectedDay} {year}</span>}</div>
@@ -109,8 +125,8 @@ const Calendar = () => {
                         <div className="displayMonth"> {displayMonth} {displayYear}</div>
                         <div className="arrows nextMonth" onClick={nextMonth} onMouseUp={() => setMonth(month + 1)}>&gt;</div>
                     </div>
-                    <div className ="daysOfWeek">{dayHeadings.map((day, index) =><div key ={index}>{day}</div>)}</div>
-                    <div className="days">{arrayOfDays.map((day, index) => <div key={index}  onClick={() => setSelectedDay(day)}>{day}</div>)}</div>
+                    <div className="daysOfWeek">{dayHeadings.map((day, index) => <div key={index}>{day}</div>)}</div>
+                    <div className="days">{arrayOfDays.map((day, index) => <div key={index} onClick={() => setSelectedDay(day)}>{day}</div>)}</div>
                 </div>
                 </>
                 : ''}
