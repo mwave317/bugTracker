@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../css/calendar.css';
 import '../App.css';
 
-
 const Calendar = () => {
     const date = new Date();
 
@@ -14,10 +13,8 @@ const Calendar = () => {
     const date1 = new Date();
     let [forDisplayedMonth, setForDisplayedMonth] = useState(date1.getMonth() + 1);
 
-    let test = new Date(year, forDisplayedMonth, 0);
-    let totalNumberOfDaysInDisplayedMonth = test.getDate();;
-
-
+    let setDatesForArrows = new Date(year, forDisplayedMonth, 0);
+    let totalNumberOfDaysInDisplayedMonth = setDatesForArrows.getDate();;
 
     let date2 = new Date(year, month, 0);
     let totalNumberOfDaysInPreviousMonth = date2.getDate();
@@ -30,37 +27,26 @@ const Calendar = () => {
     const [months, setMonths] = useState(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
     const [dayHeadings, setDayHeadings] = useState(['S', 'M', 'T', 'W', 'T', 'F', 'S'])
 
-
     let [currentMonth, setCurrentMonth] = useState(months[date.getMonth()]);
     let [displayMonth, setDisplayMonth] = useState(months[month]);
-
-
-
-
 
     let [showCalendar, setShowCalendar] = useState(false);
     let [displayedDay, setDisplayedDay] = useState(date.getDate());
     let [selectedDay, setSelectedDay] = useState();
 
-
-
-
-
     let daysGoneBy = totalNumberOfDaysInPreviousMonth - firstDayOfTheRequestedMonth;
 
-    //----------------------------------
     let displayDays = () => {
         for (let i = daysGoneBy; i <= totalNumberOfDaysInPreviousMonth; i++) {
             arrayOfPastMonth.push(i);
         }
-        arrayOfDays.push(...arrayOfPastMonth);
 
         for (let j = 1; j <= totalNumberOfDaysInDisplayedMonth; j++) {
             arrayOfDays.push(j);
         }
         return arrayOfDays;
     }
-    // ---------------------------------------
+
     let previousMonth = () => {
 
         setSelectedDay('')
@@ -84,8 +70,6 @@ const Calendar = () => {
         displayDays();
     }
 
-
-    //-----------------------------------------------
     let nextMonth = () => {
 
         setSelectedDay('');
@@ -108,8 +92,6 @@ const Calendar = () => {
 
     displayDays();
 
-    // ---------------------------------------------------
-
     let showTheCalendar = () => {
         showCalendar ? setShowCalendar(false) : setShowCalendar(true); displayDays();
     };
@@ -126,7 +108,7 @@ const Calendar = () => {
                         <div className="arrows nextMonth" onClick={nextMonth} onMouseUp={() => setMonth(month + 1)}>&gt;</div>
                     </div>
                     <div className="daysOfWeek">{dayHeadings.map((day, index) => <div key={index}>{day}</div>)}</div>
-                    <div className="days">{arrayOfDays.map((day, index) => <div key={index} onClick={() => setSelectedDay(day)}>{day}</div>)}</div>
+                    <div className="days">{arrayOfPastMonth.map((day, index) => <div key={index} className="previousMonth">{day}</div>)} {arrayOfDays.map((day, index) => <div key={index} className={selectedDay === index + 1 ? 'selected' : ''} onClick={() => setSelectedDay(day)}>{day}</div>)}</div>
                 </div>
                 </>
                 : ''}
