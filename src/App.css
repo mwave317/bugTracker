@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+.box-shadow {
+  box-shadow: 2px 3px 3px gray;
+}
+
 .inline {
   display: inline;
 }
@@ -112,7 +116,7 @@ h2 {
 /* Nav */
 
 .nav-h2 {
-  margin: .5vw .5vw 4vh 1vw; /* margin: 2vw 3vw to have it inline with the Your Work h2 */
+  margin: .5vw .5vw 6vh 1vw; /* margin: 2vw 3vw to have it inline with the Your Work h2 */
 }
 
 a {
@@ -124,10 +128,11 @@ li {
   list-style: none;
   text-decoration: none;
   color: white;
+  margin-left: 6vw;
 }
 
 .link {
-  margin-bottom: 1vh;
+  margin-bottom: 2.5vh;
 }
 
 /* Home */
@@ -149,3 +154,22 @@ li {
   outline: none;
 }
 
+/* ProfileIcon */
+
+.profile {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1vh; /*remove later */
+  margin-right: 3vw; /*remove later */
+}
+
+.profile-icon {
+  position: absolute;
+  top: 2vh;
+  height: 6.5vh;
+  width: 3.5vw;
+  border-radius: 10vw;
+  border: 2px solid black;
+  
+  
+}

@@ -1,0 +1,23 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.selectBox {
+    position: absolute;
+    border : 1px solid black;
+    padding: 1vh;
+    top: 10vh;
+    right: 2vw;
+
+}
+
+.selectBox-item {
+    padding-bottom: 1vh;
+}
+
+.selected {
+    background-color: gray;
+}
