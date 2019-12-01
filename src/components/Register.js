@@ -8,13 +8,8 @@ const Form = () => {
     errors,
     handleChange,
     handleSubmit,
-  } = useForm(login, validate);
+  } = useForm(validate);
 
-  function login() {
-    console.log('You have been logged in.');
-
-  } // This is the end of the login function
-  // const renders = React.useRef(0);
   return (
     <div className="section">
       <h2>Bug Tracker</h2>
@@ -75,7 +70,6 @@ const Form = () => {
               </div>
               <button type="submit" className="button createUser">Create User</button>
             </form>
-            {/* <div>render: {renders.current++}</div> */}
           </div>
         </div>
       </div>

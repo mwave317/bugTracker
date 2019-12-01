@@ -1,8 +1,24 @@
+require('dotenv').config();
+
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
+
+
+// router.post('/token', (req, res) => {
+//     const refreshToken = req.body.token;
+//     if (refreshToken === null) return  res.sendStatus(401);
+//     if (!refreshToken.includes(refreshToken)) return res.sendStatus(403);
+//     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+//         if (err) return res.sendStatus(403) 
+//             const  accessToken = generateAcessToken({name: user.username})
+//             res.json({ accessToken: accessToken})
+//     })
+// });
 
 router.post('/signup', async (req, res) => {
     try {
@@ -32,7 +48,12 @@ router.post('/signup', async (req, res) => {
 
 });
 
-router.post('/signin', (req, res) => {
+const setToken = (token, id) => {
+
+}
+
+
+router.post('/signin', cors(), (req, res) => {
     try {
         const { username, password } = req.body;
 
@@ -42,8 +63,17 @@ router.post('/signin', (req, res) => {
                     if (err) {
                         console.log(err);
                     } else if (response) {
-                        // res.status(200).send(true)
-                        res.status(200).redirect('http://localhost:3000/dashboard')
+                        console.log(response)
+                        if (!user._id) {
+                            console.log('Hi')
+                            const error = new Error('Please check your username and password.')
+                            error.statusCode = 401;
+                        }
+                        const token = jwt.sign({
+                            userId: user._id.toString(),
+                            firstName: user.firstName, 
+                        }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'})
+                        res.json({token: token, userId: user._id, firstName: user.firstName })
                     }
                 })
             });
@@ -54,4 +84,8 @@ router.post('/signin', (req, res) => {
         res.status(500).send('Failed');
     }
 })
+
+router.delete('/logout'), (req, res) => {
+    //Find the user  in the database and then delete the token.
+}
 module.exports = router;

@@ -11,7 +11,7 @@ const SelectBox = (props) => {
 console.log(useSelectedItem);
     return (
             <div className="selectBox box-shadow">
-            { props.items.map((item, index) => <div key={index} className={useItems === item ? "selectBox-item selecteed": 'selectBox-item'} onClick={e => setSelectedItem(item)}>{item.value}</div>)}
+            { props.items.map((item, index) => <div key={index} className="selectBox-item" onClick={e => setSelectedItem(item)}>{item.value}</div>)}
         </div>
         
     )

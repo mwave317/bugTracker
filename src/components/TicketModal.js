@@ -65,6 +65,8 @@ const TicketModal = () => {
         event.preventDefault();
 
         axios.post('http://localhost:5000/ticket/add', {
+            headers: {'Authentication': `Bearer ${JSON.parse(localStorage.getItem('token'))}`},
+
             summary,
             addType,
             reporter,

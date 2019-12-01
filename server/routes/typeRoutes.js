@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const Type = require('../models/Type');
-// const Type = mongoose.model('type');
 
 
 router.get('/', async (req, res) => {

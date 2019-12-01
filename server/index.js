@@ -1,32 +1,44 @@
+require('dotenv').config();
+
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
-const keys = require('./config/keys');
 const  authRoutes = require('./routes/authRoutes');
 const  ticketRoutes = require('./routes/ticketRoutes');
 const typeRoutes = require('./routes/typeRoutes');
+const path = require('path');
 
-app.use(express.json());
 
+const app = express();
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ limit: '10mb' , extended: false }));
 
-app.use((req, res, next) => {
+
+  app.options("/*", function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    res.sendStatus(200);
+});
+
+app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
+});
 
 
 app.use('/', authRoutes);
 app.use('/ticket', ticketRoutes);
 app.use('/type', typeRoutes);
 
+app.use((req, res, next) => {
+  res.status(404).sendFile(path.join(__dirname, '..','server', 'views', '404.html'))
+})
 
-
-mongoose.connect(keys.mongoURI, { useUnifiedTopology: true , useNewUrlParser: true})
+mongoose.connect(process.env.mongoURI, { useUnifiedTopology: true , useNewUrlParser: true})
 .then(()=> console.log("Mongodb Connected"))
 .catch(err => console.log(err));
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT);

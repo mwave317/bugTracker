@@ -1,13 +1,16 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 
 const useForm = (callback, validate) => {
 
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const storedValues = useSelector(state => state.values);
+  const dispatch = useDispatch();
+console.log(storedValues);
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       callback();

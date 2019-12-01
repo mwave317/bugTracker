@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+
+import Header from  './Header';
 import TicketModal from './TicketModal';
 import Type from './Type';
 
@@ -18,6 +20,7 @@ const Issues = () => {
 
     return (
         <div>
+            <Header/>
             <button className="toggle-button" id="centered-toggle-button" onClick={modalToggle}>Create New Task</button>
             <button className="toggle-button" id="centered-toggle-button" onClick={typeToggle}>Create New Type</button>
             <div>

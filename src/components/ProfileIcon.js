@@ -11,7 +11,7 @@ const ProfileIcon = (props) => {
     return (
         <div className="profile">
             <img className="profile-icon box-shadow" src={avatar} onClick={e => setDropDown(!useDropDown)} alt="profile picture"/>
-            { useDropDown ? <div><SelectBox items={[{value: 'Settings', id: 1},{ value: 'LogOut', id: 2}]}/></div>: ''}
+            { useDropDown ? <div><SelectBox items={[{ value: 'Create Branch', id: 1},{value: 'Create Pull Request', id: 2},{ value: 'Edit Profile', id: 3},{ value: 'Settings', id: 4},{ value: 'LogOut', id: 5}]}/></div>: ''}
         </div>
     )
 

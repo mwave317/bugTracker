@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Home from '../components/Home';
 import {useSelector } from 'react-redux';
-import { connect } from  'react-redux';
-import { Redirect } from  'react-router-dom';
+import {Redirect } from 'react-router-dom';
 
 
-const Login = () => {
+const Login = (props) => {
 
-    const isLogged = useSelector(state => state.authReducer);
+
+    // const isLogged = useSelector(state => state.authReducer);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState(null);
     const [results, setResults] = useState();
+    // const [redirect,  setRedirect] = useState(false);
 
     const formSubmit = event => {
         event.preventDefault();
@@ -23,14 +24,22 @@ const Login = () => {
             username,
             password,
             
-        }).then((res) => console.log(res.data))
-        .catch(err => console.log('Are you seeing this', err));
+        }).then((res) => { setUser({userId: res.data.userId, token: res.data.token}); localStorage.setItem('token', res.data.token)
+    })
+        .catch(err => console.log('test', err));
 
         setUsername(''); // Added just to clear the inputs for username  and password before redirect.
         setPassword('');
+
+        
     }
 
+    if(user) {
+        return <Redirect to="/dashboard"/>
+    }
 
+    console.log(user);
+    console.log(localStorage);
     return (
         <div>
             <div className="section login-section">
@@ -51,11 +60,5 @@ const Login = () => {
     )
 }
 
-// Exmaple below:
-// /* function mapStateToProps({ auth, recent }) {
-//     return { auth, recent };
-//   }
-  
-  /*export default connect(mapStateToProps, actions)(AddComment); */
 
 export default Login;
