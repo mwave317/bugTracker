@@ -6,6 +6,7 @@ import Dashboard from './Dashboard';
 import Header from './Header';
 import Issues from './Issues';
 import Projects from './Projects';
+import Settings from './Settings';
 import PullRequests from './PullRequests';
 import Repositories from './Repositories';
 
@@ -29,6 +30,7 @@ const Home = () => {
                             <Route exact path="/projects"><Projects /></Route>
                             <Route exact path="/pullrequests"><PullRequests/></Route>
                             <Route exact path="/issues"><Issues /></Route>
+                            <Route exact path="/settings"><Settings /></Route>
                         </Switch>
                     </div>
                     </div>

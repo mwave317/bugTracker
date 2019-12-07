@@ -14,6 +14,10 @@
 
 }
 
+a {
+    color: black;
+}
+
 .selectBox-item {
     padding-bottom: 1vh;
 }

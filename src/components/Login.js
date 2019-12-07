@@ -3,6 +3,7 @@ import axios from 'axios';
 import Home from '../components/Home';
 import {useSelector } from 'react-redux';
 import {Redirect } from 'react-router-dom';
+import logo from '../images/logo.jpg';
 
 
 const Login = (props) => {

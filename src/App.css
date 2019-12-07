@@ -67,6 +67,7 @@
   color: white;
 }
 
+
 /* For login */
 
 .login-section {
@@ -170,6 +171,10 @@ li {
   width: 3.5vw;
   border-radius: 10vw;
   border: 2px solid black;
-  
-  
+}
+
+/* Settings */
+
+.image {
+  width: 200px;
 }

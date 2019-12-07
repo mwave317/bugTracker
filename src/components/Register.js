@@ -1,6 +1,7 @@
 import React from 'react';
 import useForm from "./UseForm";
 import validate from './Validation';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Form = () => {
   const {
@@ -9,6 +10,8 @@ const Form = () => {
     handleChange,
     handleSubmit,
   } = useForm(validate);
+
+ 
 
   return (
     <div className="section">
