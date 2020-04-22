@@ -12,7 +12,7 @@ const SelectBox = (props) => {
 console.log(useSelectedItem);
     return (
             <div className="selectBox box-shadow">
-            { props.items.map((item, index) => <div key={index} className="selectBox-item" onClick={e => setSelectedItem(item)}> <Link to={item.value.toLowerCase()}>{item.value}</Link></div>)}
+            { props.items.map((item, index) => <div key={index} className="selectBox-item" onClick={e => setSelectedItem(item)}> <Link to={item.value.toLowerCase().replace(/\s+/g, '')}>{item.value}</Link></div>)}
         </div>
         
     )

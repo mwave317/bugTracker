@@ -21,17 +21,17 @@ const Validate = (values) => {
 
     if (!values.password) {
         errors.password = 'Password is required';
-    // } else if (values.password.length < 8) {
-    //     errors.password = 'Password must be more than 8 characters';
-    // } else if (!/[A-Z]/.test(values.password)) {
-    //     errors.password = 'Password must contain one capital letter.';
-    // }
-    // else if (!/[0-9]/.test(values.password)) {
-    //     errors.password = 'Password must contain at least one number.';
-    // }
+    } else if (values.password.length < 8) {
+        errors.password = 'Password must be more than 8 characters';
+    } else if (!/[A-Z]/.test(values.password)) {
+        errors.password = 'Password must contain one capital letter.';
+    }
+    else if (!/[0-9]/.test(values.password)) {
+        errors.password = 'Password must contain at least one number.';
+    }
     // else if (!/[~`!@#$%^&*+=\-[\]\\';,/{}|\\":<>_?]/.test(values.password)) {
     //     errors.password = 'Password must contain one special character';
-    }
+    // }
     else if (values.password !== values.reenterPassword) {
         errors.password = 'The passwords do not match';
     }

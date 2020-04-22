@@ -10,19 +10,23 @@ const Settings = () => {
         const files = e.target.files[0];
         const formData = new FormData();
         formData.append("upload_preset", "bugtracker1");
-        formData.append('file', files);
+        formData.append("file", files);
         setLoading(true);
 
         axios.post('https://api.cloudinary.com/v1_1/bugtracker/image/upload', formData)
-            .then(res => setImage(res.data.secure.url))
+            .then(res => setImage(res.data.secure_url))
             .then(setLoading(false))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     }
 
     return (
         <div>
-            <input className="settings-image" type="file" name="file" onChange={uploadImage} />
-                {loading ? <h1>Loading....</h1> : <img className="image" src={image} />}
+            <label>
+                Avatar: 
+            </label>
+            <input type="file" name="file" onChange={uploadImage} />
+
+            {loading ? <h1>Loading...</h1> : <img className="settings-image" src={image} />}
         </div>
     )
 }

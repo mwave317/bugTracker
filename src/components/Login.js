@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Home from '../components/Home';
-import {useSelector } from 'react-redux';
+// import Home from '../components/Home';
 import {Redirect } from 'react-router-dom';
-import logo from '../images/logo.jpg';
 
 
 const Login = (props) => {
@@ -27,7 +25,7 @@ const Login = (props) => {
             
         }).then((res) => { setUser({userId: res.data.userId, token: res.data.token}); localStorage.setItem('token', res.data.token)
     })
-        .catch(err => console.log('test', err));
+        .catch(err => console.log(err));
 
         setUsername(''); // Added just to clear the inputs for username  and password before redirect.
         setPassword('');
