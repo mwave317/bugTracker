@@ -28,9 +28,8 @@ const Home = () => {
                             <Route exact path ="/dashboard"><Dashboard/></Route>
                             <Route exact path="/repositories"><Repositories /></Route>
                             <Route exact path="/projects"><Projects /></Route>
-                            <Route exact path="/pullrequests"><PullRequests/></Route>
+                            <Route exact path="/pullrequests"><PullRequests /></Route>
                             <Route exact path="/issues"><Issues /></Route>
-                            <Route exact path="/settings"><Settings /></Route>
                         </Switch>
                     </div>
                     </div>

@@ -3,7 +3,7 @@ import useForm from "./UseForm";
 import validate from './Validation';
 import { useSelector, useDispatch } from 'react-redux';
 
-const Form = () => {
+const Register = () => {
   const {
     values,
     errors,
@@ -80,4 +80,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Register;

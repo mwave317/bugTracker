@@ -51,7 +51,6 @@ const Login = (props) => {
                             <button className="inline button" type="submit">Continue</button>
                         </form>
                     </div>
-       
                 </div>
             </div>
             <div className="legal"><p className="legal-text inline">Privacy Policy</p><p className="legal-text inline"> Terms of service</p></div>

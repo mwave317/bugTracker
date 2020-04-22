@@ -4,8 +4,9 @@ const PullRequests = () => {
     return (
        <div>
            <h2>Pull Requests</h2>
-           </div>
+           <p>There are no pull requests at this time.</p>
+       </div>
     )
-    }
+}
 
     export default PullRequests;

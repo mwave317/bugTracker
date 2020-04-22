@@ -20,10 +20,12 @@ const Issues = () => {
 
     return (
         <div>
+            <h2>Issues</h2>
             <Header/>
             <button className="toggle-button" id="centered-toggle-button" onClick={modalToggle}>Create New Task</button>
             <button className="toggle-button" id="centered-toggle-button" onClick={typeToggle}>Create New Type</button>
             <div>
+                
                 {toggle && !type ? <TicketModal /> : false}
                 {type && !toggle ? <Type/> : false}
             </div>
